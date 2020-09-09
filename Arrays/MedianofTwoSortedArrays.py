@@ -33,11 +33,15 @@ class Solution:
         return median
 
     def findMedianSortedArrays_bruteForce(self, nums1, nums2):
+        ##Runtime: 92 ms, faster than 88.57% of Python3 online submissions
+        ##Memory Usage: 13.8 MB, less than 98.65% of Python3 online submissions
         nums = sorted(nums1 + nums2)
         return self.findMedian(nums)
 
     def findMedianSortedArrays_EfficientMerge(self, nums1, nums2):
         ##traverse the elements in both lists and copy the smaller one into array
+        ##Runtime: 108 ms, faster than 46.10% of Python3 online submissions
+        ##Memory Usage: 14.1 MB, less than 37.66% of Python3 online submissions
         nums = []
         if(len(nums1) == 0):
             nums = nums2

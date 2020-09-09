@@ -29,6 +29,8 @@ class Solution:
         return None
 
     def twoSum_bruteforce(self, nums, target):
+        ##Runtime: 5992 ms, faster than 8.75% of Python3 online submissions
+        ##Memory Usage: 14.9 MB, less than 84.06% of Python3 online submissions
         for i in range(0,len(nums)):
             for j in range(i+1,len(nums)):
                 if(nums[i] + nums[j] == target):
@@ -36,6 +38,8 @@ class Solution:
         return None
 
     def twoSum_searchOtherNumber(self, nums, target):
+        ##Runtime: 5160 ms, faster than 16.98% of Python3 online submissions
+        ##Memory Usage: 14.9 MB, less than 79.81% of Python3 online submissions
         for i in range(0,len(nums)):
             other_num = target - nums[i]
             j = self.searchNum(nums, other_num, i) #This can be linear or binary search
@@ -44,6 +48,8 @@ class Solution:
         return None
 
     def twoSum_useDict(self, nums, target):
+        ##Runtime: 52 ms, faster than 72.87% of Python3 online submissions
+        ##Memory Usage: 15.4 MB, less than 20.45% of Python3 online submissions
         d = {}
         for ind, num in enumerate(nums):
             other_num = target - num

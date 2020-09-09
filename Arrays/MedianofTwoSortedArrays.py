@@ -24,16 +24,42 @@ Input: nums1 = [2], nums2 = []
 Output: 2.00000'''
 
 class Solution:
-    def findMedianSortedArrays_bruteForce(self, nums1, nums2):
-        nums = sorted(nums1 + nums2)
-        if(len(nums)%2 == 0):
-            median = (nums[int(len(nums)/2)] + nums[int(len(nums)/2-1)])/2
+
+    def findMedian(self, arr):
+        if(len(arr)%2 == 0):
+            median = (arr[int(len(arr)/2)] + arr[int(len(arr)/2-1)])/2
         else:
-            median = nums[int(len(nums)/2)]
+            median = arr[int(len(arr)/2)]
         return median
 
+    def findMedianSortedArrays_bruteForce(self, nums1, nums2):
+        nums = sorted(nums1 + nums2)
+        return self.findMedian(nums)
+
     def findMedianSortedArrays_EfficientMerge(self, nums1, nums2):
-        pass
+        ##traverse the elements in both lists and copy the smaller one into array
+        nums = []
+        if(len(nums1) == 0):
+            nums = nums2
+        elif(len(nums2)==0):
+            nums = nums1
+        else:
+            i = 0; j = 0;
+            while (i < len(nums1) and j < len(nums2)):
+                if(nums1[i] < nums2[j]):
+                    nums.append(nums1[i])
+                    i += 1
+                else:
+                    nums.append(nums2[j])
+                    j += 1
+            while (i < len(nums1)):
+                nums.append(nums1[i])
+                i += 1
+            while (j < len(nums2)):
+                nums.append(nums2[j])
+                j += 1
+        return self.findMedian(nums)
 
 if __name__ == "__main__":
-    print(Solution().findMedianSortedArrays_bruteForce([1,3], [2,4]))
+    print(Solution().findMedianSortedArrays_bruteForce([], [1]))
+    print(Solution().findMedianSortedArrays_EfficientMerge([], [1]))
